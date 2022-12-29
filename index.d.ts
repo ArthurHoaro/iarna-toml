@@ -8,6 +8,12 @@ interface JsonMap {
   [key: string]: AnyJson;
 }
 
+interface Config {
+  formatter?: {
+    [key: string]: Function,
+  },
+}
+
 interface ParseOptions {
   /**
    * The amount text to parser per pass through the event loop. Defaults to 40kb (`40000`).
@@ -46,7 +52,7 @@ interface FuncStringify {
    *
    * `moment` objects are treated the same as native `Date` objects, in this respect.
    */
-  (obj: JsonMap): string
+  (obj: JsonMap, config: Config): string
 
   /**
    * Serialize a value as TOML would. This is a fragment and not a complete valid TOML document.
